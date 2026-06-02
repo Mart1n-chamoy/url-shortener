@@ -19,12 +19,26 @@ app = FastAPI(
     version="1.0.0"
 )
 
+from fastapi import Request
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
+
+templates = Jinja2Templates(directory="app/templates")
+
+app.mount(
+    "/static",
+    StaticFiles(directory="app/static"),
+    name="static"
+)
+
 Base.metadata.create_all(bind=engine)
 
 @app.get("/")
-def home():
-    return {"message": "URL Shortener API funcionando 🚀"}
-
+def home(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="index.html"
+    )
 
 @app.post("/shorten")
 def shorten_url(url_data: URLCreate, db: Session = Depends(get_db)):

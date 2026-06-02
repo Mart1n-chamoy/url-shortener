@@ -2,6 +2,9 @@
 
 Proyecto desarrollado con FastAPI para generar URLs cortas.
 
+<img width="739" height="397" alt="image" src="https://github.com/user-attachments/assets/bcd3b26a-ea23-4652-b37d-1d36cee8bb1c" />
+
+
 ## Tecnologías
 - Python
 - FastAPI

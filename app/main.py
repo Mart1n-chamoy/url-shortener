@@ -29,7 +29,23 @@ def home():
 @app.post("/shorten")
 def shorten_url(url_data: URLCreate, db: Session = Depends(get_db)):
 
-    short_code = generate_short_code()
+    short_code = (
+    url_data.custom_code
+    if url_data.custom_code
+    else generate_short_code()
+
+    )
+    
+    existing = db.query(URL).filter(
+        URL.short_code == short_code
+    ).first()
+
+    if existing:
+        raise HTTPException(
+        status_code=400,
+        detail="El código ya existe"
+        )
+    
 
     new_url = URL(
         original_url=str(url_data.url),
@@ -86,3 +102,4 @@ def get_stats(short_code: str, db: Session = Depends(get_db)):
         "short_code": url.short_code,
         "clicks": url.clicks
     }
+

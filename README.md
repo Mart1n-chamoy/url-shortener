@@ -13,15 +13,15 @@ Windows:
 ```bash
 python -m venv venv
 source venv/Scripts/activate
-
+```
 Linux/Mac:
 ```bash
 python3 -m venv venv
 source venv/bin/activate
-
+```
 ```bash
 uvicorn app.main:app --reload
-
+```
 ## Ejecutar con Docker
 
 ```bash

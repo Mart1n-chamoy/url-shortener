@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URL Shortener</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
@@ -8,25 +10,58 @@
 
 <div class="container">
 
-    <h1>URL Shortener 🚀</h1>
+    <header>
+        <h1>🚀 URL Shortener</h1>
+        <p>Acorta enlaces y consulta estadísticas</p>
+    </header>
 
-    <input
-        type="text"
-        id="url"
-        placeholder="https://ejemplo.com"
-    >
+    <div class="card">
 
-    <input
-        type="text"
-        id="custom_code"
-        placeholder="Código personalizado (opcional)"
-    >
+        <h2>Crear URL corta</h2>
 
-    <button onclick="shortenUrl()">
-        Acortar URL
-    </button>
+        <input
+            type="text"
+            id="url"
+            placeholder="https://ejemplo.com"
+        >
 
-    <div id="result"></div>
+        <input
+            type="text"
+            id="custom_code"
+            placeholder="Código personalizado (opcional)"
+        >
+
+        <button onclick="shortenUrl()">
+            Acortar URL
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Consultar estadísticas</h2>
+
+        <input
+            type="text"
+            id="stats_code"
+            placeholder="Código corto"
+        >
+
+        <button onclick="getStats()">
+            Ver estadísticas
+        </button>
+
+        <div id="stats"></div>
+
+    </div>
+
+    <footer>
+        <p>
+            FastAPI • SQLite • SQLAlchemy • Docker
+        </p>
+    </footer>
 
 </div>
 
